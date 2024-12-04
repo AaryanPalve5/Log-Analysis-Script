@@ -1,11 +1,18 @@
+import os
+import logging
 import re
 import csv
 from collections import defaultdict, Counter
+from query_rag import query_rag  # Import the chatbot functionality
+from dotenv import load_dotenv
 
 # Constants
 LOG_FILE = "sample.log"
 OUTPUT_CSV = "log_analysis_results.csv"
 FAILED_LOGIN_THRESHOLD = 10
+
+# Load environment variables
+load_dotenv()
 
 def parse_log_file(file_path):
     """Parses the log file and extracts relevant data."""
@@ -97,6 +104,30 @@ def main():
     # Save all results to CSV
     save_to_csv(sorted_requests, most_accessed_endpoint, failed_logins, OUTPUT_CSV)
     print(f"\nResults saved to {OUTPUT_CSV}")
+    
+    # Allow user to query the log data
+    print("\nNow, you can ask questions related to the log analysis.")
+    while True:
+        # Get user input dynamically for the query
+        question = input("Enter your query (or type 'exit' to quit): ").strip()
+
+        if question.lower() == 'exit':
+            print("Exiting the chat. Goodbye!")
+            break
+        
+        # Get the response from the RAG model based on user input
+        response = query_rag(question=question)
+        print(f"Response: {response}")
+        
+        # Optionally, allow the user to continue asking questions
+        continue_query = input("Would you like to ask another question? (yes/no): ").strip().lower()
+        
+        if continue_query == "no":
+            print("Exiting the chat. Goodbye!")
+            break
+        elif continue_query != "yes":
+            print("Invalid option. Exiting the chat.")
+            break
 
 if __name__ == "__main__":
     main()
