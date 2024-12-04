@@ -24,8 +24,8 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-500 to-blue-800 text-white">
-      <div className="container mx-auto p-8">
+    <div className="min-h-screen bg-gradient-to-r from-blue-500 to-blue-800 text-white border-4 border-black flex flex-col">
+      <div className="container mx-auto p-8 flex-grow">
         <h1 className="text-4xl font-extrabold text-center mb-12">Log Analysis Dashboard</h1>
 
         {/* Layout for Desktop: Side by Side */}
@@ -73,7 +73,7 @@ const Dashboard = () => {
             </thead>
             <tbody>
               {failedLoginData.map((data, index) => (
-                <tr key={index} className="border-t hover:bg-gray-100 transition-all duration-200">
+                <tr key={index} className="border-t">
                   <td className="px-6 py-3 text-gray-700">{data.ip}</td>
                   <td className="px-6 py-3 text-gray-700">{data.failedCount}</td>
                 </tr>
@@ -81,9 +81,6 @@ const Dashboard = () => {
             </tbody>
           </table>
         </div>
-
-        {/* Footer with Dashboard Link */}
-        
       </div>
     </div>
   );
