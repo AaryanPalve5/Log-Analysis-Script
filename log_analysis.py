@@ -119,6 +119,9 @@ def main():
         response = query_rag(question=question)
         print(f"Response: {response}")
         
+        print("\nYou can view the visualized data at the following dashboard link:")
+        print("https://log-analysis-script.onrender.com")
+    
         # Optionally, allow the user to continue asking questions
         continue_query = input("Would you like to ask another question? (yes/no): ").strip().lower()
         
