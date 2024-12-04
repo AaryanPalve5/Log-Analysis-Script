@@ -25,25 +25,3 @@ Additionally, it integrates a chatbot powered by Google Gemini. This chatbot lev
 * `log_analysis_results.csv`: CSV file storing the analysis results.
 * `sample.log`: Sample log file containing server logs.
 * `requirements.txt`: Text file listing the Python dependencies required for the project.
-
-## Installation
-
-**Prerequisites:**
-
-  - Ensure you have Python (version 3.x recommended) installed on your system. You can verify this by running `python --version` or `python3 --version` in your terminal.
-  - Download and install `pip`, the Python package installer, if it's not already present.
-
-**Steps:**
-
-1. **Clone the Repository:**
-
-   ```bash
-   git clone [https://github.com/AaryanPalve5/log-analysis-and-chatbot.git](https://github.com/AaryanPalve5/log-analysis-and-chatbot.git)
-   cd log-analysis-and-chatbot`
-   ```
-
-  ```bash
-  pip install -r requirements.txt
-  ```
-
-- Then run files as per need
