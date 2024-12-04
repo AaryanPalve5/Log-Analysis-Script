@@ -20,6 +20,7 @@ Additionally, it integrates a chatbot powered by Google Gemini. This chatbot lev
     * Request count per IP address
 * **CSV Export:** Saves the analysis results to a CSV file (`log_analysis_results.csv`) for further analysis and visualization.
 * **Chatbot Integration:** Uses Google Gemini's Retrieval-Augmented Generation (RAG) model to enable users to query the logs and results interactively.
+* **Dashboard** Check out the [Log Analysis Script](https://log-analysis-script.onrender.com) for more details.
 
 ## Files
 
