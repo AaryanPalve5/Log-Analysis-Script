@@ -24,56 +24,67 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-semibold mb-6 text-center">Log Analysis Dashboard</h1>
+    <div className="min-h-screen bg-gradient-to-r from-blue-500 to-blue-800 text-white">
+      <div className="container mx-auto p-8">
+        <h1 className="text-4xl font-extrabold text-center mb-12">Log Analysis Dashboard</h1>
 
-      {/* Bar Chart Section */}
-      <div className="p-4 bg-white shadow-lg rounded-lg mb-8">
-        <h2 className="text-xl font-bold mb-4">IP Access Count</h2>
-        <ResponsiveContainer width="100%" height={400}>
-          <BarChart data={ipData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="ip" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="count" fill="#4c51bf" />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
+        {/* Layout for Desktop: Side by Side */}
+        <div className="flex flex-wrap justify-between space-x-6 space-y-8">
 
-      {/* Most Accessed Endpoint Section */}
-      <div className="p-4 bg-white shadow-lg rounded-lg mb-8 flex items-center justify-between">
-        <div>
-          <h3 className="text-lg font-semibold">Most Accessed Endpoint</h3>
-          <p className="text-sm text-gray-600">{endpointData.endpoint}</p>
+          {/* IP Access Count Bar Chart */}
+          <div className="w-full lg:w-[48%] p-6 bg-white rounded-lg shadow-xl">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-4">IP Access Count</h2>
+            <ResponsiveContainer width="100%" height={400}>
+              <BarChart data={ipData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="ip" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="count" fill="#6C63FF" barSize={30} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+
+          {/* Most Accessed Endpoint */}
+          <div className="w-full lg:w-[48%] p-6 bg-white rounded-lg shadow-xl">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">Most Accessed Endpoint</h3>
+            <div className="flex justify-between items-center">
+              <div>
+                <p className="text-sm text-gray-600">{endpointData.endpoint}</p>
+              </div>
+              <div className="text-right">
+                <p className="text-4xl font-bold text-gray-800">{endpointData.count}</p>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <div className="text-right">
-          <p className="text-4xl font-bold">{endpointData.count}</p>
-        </div>
-      </div>
 
-      {/* Failed Login Count Section */}
-      <div className="p-4 bg-white shadow-lg rounded-lg mb-8">
-        <h3 className="text-xl font-semibold mb-4">Failed Login Count</h3>
-        <table className="min-w-full table-auto">
-          <thead>
-            <tr>
-              <th className="px-4 py-2 text-left font-semibold text-gray-600">IP Address</th>
-              <th className="px-4 py-2 text-left font-semibold text-gray-600">Failed Login Count</th>
-            </tr>
-          </thead>
-          <tbody>
-            {failedLoginData.map((data, index) => (
-              <tr key={index} className="border-t">
-                <td className="px-4 py-2 text-gray-700">{data.ip}</td>
-                <td className="px-4 py-2 text-gray-700">{data.failedCount}</td>
+        {/* Failed Login Count Table */}
+        <div className="p-6 bg-white rounded-lg shadow-xl mt-12">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-4">Failed Login Count</h3>
+          <table className="min-w-full table-auto">
+            <thead>
+              <tr>
+                <th className="px-6 py-3 text-left font-medium text-gray-600 uppercase">IP Address</th>
+                <th className="px-6 py-3 text-left font-medium text-gray-600 uppercase">Failed Login Count</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {failedLoginData.map((data, index) => (
+                <tr key={index} className="border-t hover:bg-gray-100 transition-all duration-200">
+                  <td className="px-6 py-3 text-gray-700">{data.ip}</td>
+                  <td className="px-6 py-3 text-gray-700">{data.failedCount}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
+        {/* Footer with Dashboard Link */}
+        
+      </div>
     </div>
   );
 };
